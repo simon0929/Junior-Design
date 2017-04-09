@@ -10,8 +10,8 @@ def add_event(name, datetime, org, description, location):
     event_info = [name, datetime, org, description, location]
     cur.execute('INSERT INTO events VALUES (?,?,?,?,?)', event_info)
 
-    conn.close()
     conn.commit()
+    conn.close()
 
 
 def list_events():
@@ -22,8 +22,8 @@ def list_events():
     cur.execute('SELECT rowid,name FROM events')
     res = cur.fetchall()
 
-    conn.close()
     conn.commit()
+    conn.close()
 
     return res
 
@@ -34,6 +34,9 @@ def get_event(rowid):
     cur = conn.cursor()
 
     cur.execute('SELECT * FROM events WHERE rowid=?', [rowid])
+    res = cur.fetchone()
 
-    conn.close()
     conn.commit()
+    conn.close()
+
+    return res
