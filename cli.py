@@ -6,9 +6,10 @@ import queries
 def main():
     """Implementation of CL."""
     parser = argparse.ArgumentParser(
-        description="Prototype interface to GT events listing."
+        description="Prototype interface to GT events listing.",
+        usage='usage: gt-events {list,add,get}'
     )
-    subparsers = parser.add_subparsers()
+    subparsers = parser.add_subparsers(dest="subparser_name")
 
     # list-events parser
     parse_list = subparsers.add_parser(
@@ -72,9 +73,12 @@ def main():
 
     # CLI processing
     cli_args = parser.parse_args()
-    try:
-        cli_args.func(cli_args)
-    except (ValueError, AttributeError) as e:
+    if (cli_args.subparser_name is None):
+        print(parser.description + '\n' + parser.usage)
+    else:
+        try:
+            cli_args.func(cli_args)
+        except (ValueError, AttributeError) as e:
             print(e)
 
 
