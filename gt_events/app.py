@@ -5,12 +5,20 @@ import queries
 app = flask.Flask(__name__)
 
 
-@app.route('/')
-def eventslist():
+@app.route('/events/')
+def events_list():
     """Draw the events list with test data."""
     events = queries.list_events()
     events = [Event(*event) for event in events]
-    return flask.render_template('test.html', events=events)
+    return flask.render_template('eventslist.html', events=events)
+
+
+@app.route('/events/<event_id>')
+def event_details(event_id):
+    """Render event details."""
+    event = Event(*queries.get_event(event_id))
+    print(event.name + '\n')
+    return flask.render_template('eventdetails.html', event=event)
 
 
 class Event:
@@ -20,10 +28,14 @@ class Event:
     name = ''
     datetime = ''
     org = ''
+    description = ''
+    location = ''
 
-    def __init__(self, rowid, name, datetime, org):
+    def __init__(self, rowid, name, datetime, org, description, location):
         """Construct an Event object."""
         self.rowid = rowid
         self.name = name
         self.datetime = datetime
         self.org = org
+        self.description = description
+        self.location = location
