@@ -19,7 +19,7 @@ def list_events():
     conn = sqlite3.connect('events.db')
     cur = conn.cursor()
 
-    cur.execute('SELECT rowid,name FROM events')
+    cur.execute('SELECT rowid ,name, datetime, org, description, location  FROM events')
     res = cur.fetchall()
 
     conn.commit()
@@ -33,7 +33,7 @@ def get_event(rowid):
     conn = sqlite3.connect('events.db')
     cur = conn.cursor()
 
-    cur.execute('SELECT * FROM events WHERE rowid=?', [rowid])
+    cur.execute('SELECT rowid, * FROM events WHERE rowid=?', [rowid])
     res = cur.fetchone()
 
     conn.commit()

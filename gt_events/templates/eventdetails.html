@@ -1,0 +1,14 @@
+<!doctype html>
+{% block head %}
+<title>Events List</title>
+<meta charset=utf-8>
+{% endblock %}
+
+{% block body %}
+    <p>
+      <b>{{ event.rowid }}. {{ event.name }}</b> ({{ event.datetime }})
+      <br> hosted by {{ event.org }}
+      <br> at {{ event.location }}
+    </p>
+    <p> {{ event.description }} </p>
+{% endblock %}

@@ -1,6 +1,6 @@
 """Command line interface for the Team 7140 GT Event Finder Prototype."""
 import argparse
-import queries
+import backend.queries as queries
 
 
 def main():
