@@ -2,8 +2,11 @@
 import flask
 import queries
 
-app = flask.Flask(__name__)
+app = flask.Flask(__name__, static_url_path='')
 
+@app.route('/')
+def root():
+    return app.send_static_file('index.html')
 
 @app.route('/events/')
 def events_list():
@@ -17,7 +20,7 @@ def events_list():
 def event_details(event_id):
     """Render event details."""
     event = Event(*queries.get_event(event_id))
-    print(event.name + '\n')
+    # print(event.name + '\n')
     return flask.render_template('eventdetails.html', event=event)
 
 
