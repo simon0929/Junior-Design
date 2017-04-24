@@ -1,10 +1,5 @@
-<!doctype html>
-{% block head %}
-<title>Events List</title>
-<meta charset=utf-8>
-{% endblock %}
-
-{% block body %}
+{% extends "base.html" %}
+{% block content %}
   {% for event in events %}
     <p>
     <a href="{{ url_for('event_details', event_id=event.rowid) }}">

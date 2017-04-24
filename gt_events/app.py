@@ -42,3 +42,6 @@ class Event:
         self.org = org
         self.description = description
         self.location = location
+
+if __name__ == '__main__':
+    app.run()
