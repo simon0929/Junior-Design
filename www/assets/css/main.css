@@ -1680,7 +1680,7 @@
 		font-style: italic;
 	}
 
-	p, ul, ol, dl, table {
+	p, ol, dl, table {
 		margin-bottom: 1.5em;
 	}
 
@@ -2036,7 +2036,7 @@
 
 	#header-wrapper {
 		position: relative;
-		padding: 4em 0 2em 0;
+		padding: 4em 0 1em 0;
 		background-image: url("images/overlay.png"), url("images/header.svg"), -moz-linear-gradient(75deg, #1f2faf 15%, #73a9f7 55%);
 		background-image: url("images/overlay.png"), url("images/header.svg"), -webkit-linear-gradient(75deg, #1f2faf 15%, #73a9f7 55%);
 		background-image: url("images/overlay.png"), url("images/header.svg"), -ms-linear-gradient(75deg, #1f2faf 15%, #73a9f7 55%);
@@ -2114,7 +2114,7 @@
 
 			#nav > ul > li {
 				display: inline-block;
-				margin-top: 2em;
+				margin-top: .25em;
 				margin-right: 2em;
 				position: relative;
 			}
