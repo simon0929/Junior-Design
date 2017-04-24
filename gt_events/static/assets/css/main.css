@@ -217,8 +217,8 @@
 
 /* Events Feed */
 	
-	.eventWrapper {
-		display:flex;
+	.eventCardWrapper {
+		display: flex;
     	flex-flow: row-reverse wrap-reverse;
     	justify-content: space-around;
 	}
@@ -244,6 +244,20 @@
 		/* Add some padding inside the event container */
 	    padding: 2px 16px;
 	    text-align: center;
+	}
+
+	.eventDetailsWrapper  {
+		display: relative;
+    	flex-flow: row-reverse wrap-reverse;
+    	justify-content: space-around;
+	}
+
+	#eventDetails {
+		margin-left: 1em;
+	}
+
+	.eventDetailsText {
+		display: relative;
 	}
 
 /* Grid */
@@ -2009,7 +2023,7 @@
 		position: relative;
 		background: #fff;
 		overflow-x: hidden;
-		padding: 6em 0 6em 0;
+		padding: 3em 0 6em 0;
 	}
 
 	.image-wrapper {

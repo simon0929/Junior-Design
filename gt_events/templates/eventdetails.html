@@ -1,9 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
-    <p>
-      <b>{{ event.rowid }}. {{ event.name }}</b> ({{ event.datetime }})
-      <br> hosted by {{ event.org }}
-      <br> at {{ event.location }}
-    </p>
-    <p> {{ event.description }} </p>
+	
+	<!-- Main -->
+	<div class="wrapper">
+		<div class="container" id="main">
+
+			<!-- Content -->
+			<article id="content">
+				<div class="eventDetailsWrapper">	
+
+					<h2><b>{{ event.name }}</b></h2>
+					<div id="eventDetails">
+						<b>Date:</b><p class="eventDetailsText">({{ event.datetime }})</p>
+					    <b>Hosted by:</b><p class="eventDetailsText">{{ event.org }}</p>
+					    <b>Location:</b><p class="eventDetailsText">{{ event.location }}</p>
+					    <b>Description:</b><p class="eventDetailsText">{{ event.description }}</p>
+					</div>
+				</div>
+			</article>
+				
+		</div>
+
+	</div>
+
+
+    
 {% endblock %}

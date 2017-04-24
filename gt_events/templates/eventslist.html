@@ -13,13 +13,13 @@
 								<p>Check out these upcoming events near you!</p>
 							</header>
 
-							<div class="eventWrapper">	
+							<div class="eventCardWrapper">	
 
 								{% for event in events %}
 									<div class="eventCard">
 										<div class = "eventContainer">
 										    <a href="{{ url_for('event_details', event_id=event.rowid) }}">
-										    	<b>{{ event.rowid }}. {{ event.name }}</b> ({{ event.datetime }})
+										    	<b>{{ event.name }}</b> ({{ event.datetime }})
 										  	</a>
 										    <br> hosted by {{ event.org }}
 										</div>
