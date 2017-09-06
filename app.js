@@ -10,12 +10,12 @@ var app = express();
 
 
 var bodyParser = require('body-parser')
-app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
 
-function checkAuth (req, res, next) {
+function checkAuth(req, res, next) {
   console.log('checkAuth ' + req.url);
 
   // replace with firebase logic check.
