@@ -12,11 +12,12 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "express":"*",
-    "body-parser":"*",
-    "cookie-parser":"*",
-    "express-session":"*",
-    "express-json":"*"
+    "body-parser": "*",
+    "cookie-parser": "*",
+    "express": "*",
+    "express-json": "*",
+    "express-session": "*",
+    "firebaseui": "^2.3.0"
   },
   "devDependencies": {}
 }

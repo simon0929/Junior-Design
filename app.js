@@ -3,10 +3,21 @@ var http = require('http');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var json = require('express-json');
+var firebase = require("firebase");
 var path = require('path');
 var port = 8999;
 
 var app = express();
+
+var config = {
+  apiKey: "AIzaSyBDd6f89s9qxu5yCpu4ISdf3tTDVsvJlvM",
+  authDomain: "planbyme-5c048.firebaseapp.com",
+  databaseURL: "https://planbyme-5c048.firebaseio.com",
+  projectId: "planbyme-5c048",
+  storageBucket: "planbyme-5c048.appspot.com",
+  messagingSenderId: "580258903641"
+};
+firebase.initializeApp(config);
 
 
 var bodyParser = require('body-parser')
