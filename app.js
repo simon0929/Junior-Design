@@ -39,23 +39,23 @@ app.use(checkAuth);
 
 
 var router = express.Router();
-router.get('/', function (req, res, next) {
+router.get('/', function(req, res, next) {
   res.sendFile(path.join(__dirname, '/views', 'index.html'));
 });
 
-router.get('/welcome', function (req, res, next) {
+router.get('/welcome', function(req, res, next) {
   res.render('welcome');
 });
 
-router.get('/events', function (req, res, next) {
+router.get('/events', function(req, res, next) {
   res.sendFile(path.join(__dirname, '/views', 'events.html'));
 });
 
-router.get('/login', function (req, res, next) {
+router.get('/login', function(req, res, next) {
   res.sendFile(path.join(__dirname, '/views', 'login.html'));
 });
 
-router.post('/login', function (req, res, next) {
+router.post('/login', function(req, res, next) {
 
   // you might like to do a database look-up or something more scalable here
   if (req.body.username && req.body.username === 'user' && req.body.password && req.body.password === 'pass') {
@@ -68,7 +68,7 @@ router.post('/login', function (req, res, next) {
 
 });
 
-router.get('/logout', function (req, res, next) {
+router.get('/logout', function(req, res, next) {
   delete req.session.authenticated;
   res.redirect('/');
 });
