@@ -1,0 +1,18 @@
+{
+  "author": "Chaitya Shah",
+  "name": "GTEventFinder",
+  "description": "Events",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "*",
+    "cookie-parser": "*",
+    "express": "*",
+    "express-json": "*",
+    "express-session": "*",
+    "firebaseui": "^2.3.0"
+  },
+  "devDependencies": {}
+}

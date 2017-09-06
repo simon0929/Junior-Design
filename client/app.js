@@ -5,7 +5,7 @@ var session = require('express-session');
 var json = require('express-json');
 var firebase = require("firebase");
 var path = require('path');
-var port = 8999;
+var port = 5000;
 
 var app = express();
 
@@ -39,6 +39,7 @@ function checkAuth(req, res, next) {
 }
 app.set('view engine', 'html');
 app.use(express.static(__dirname + '/views'));
+app.use(express.static(__dirname + '/views/firebase'));
 app.use(express.static(__dirname + '/static'));
 app.use(cookieParser());
 app.use(session({
@@ -54,16 +55,16 @@ router.get('/', function(req, res, next) {
   res.sendFile(path.join(__dirname, '/views', 'index.html'));
 });
 
-router.get('/welcome', function(req, res, next) {
-  res.render('welcome');
-});
-
 router.get('/events', function(req, res, next) {
   res.sendFile(path.join(__dirname, '/views', 'events.html'));
 });
 
 router.get('/login', function(req, res, next) {
   res.sendFile(path.join(__dirname, '/views', 'login.html'));
+});
+
+router.get('/login', function(req, res, next) {
+  res.sendFile(path.join(__dirname, '/views', 'register.html'));
 });
 
 router.post('/login', function(req, res, next) {
@@ -73,10 +74,8 @@ router.post('/login', function(req, res, next) {
     req.session.authenticated = true;
     res.redirect('/');
   } else {
-    req.flash('error', 'Username and password are incorrect');
     res.redirect('/login');
   }
-
 });
 
 router.get('/logout', function(req, res, next) {
@@ -88,4 +87,4 @@ app.use('/', router);
 
 const server  = http.createServer(app);
 server.listen(port);
-console.log('Node listening on port %s', port);
+console.log('Client serving on port %s', port);
