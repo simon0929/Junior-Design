@@ -15,7 +15,8 @@
     "express":"*",
     "body-parser":"*",
     "cookie-parser":"*",
-    "express-session":"*"
+    "express-session":"*",
+    "express-json":"*"
   },
   "devDependencies": {}
 }
