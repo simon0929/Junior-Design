@@ -9,15 +9,7 @@ var port = 5000;
 
 var app = express();
 
-var config = {
-  apiKey: "AIzaSyBDd6f89s9qxu5yCpu4ISdf3tTDVsvJlvM",
-  authDomain: "planbyme-5c048.firebaseapp.com",
-  databaseURL: "https://planbyme-5c048.firebaseio.com",
-  projectId: "planbyme-5c048",
-  storageBucket: "planbyme-5c048.appspot.com",
-  messagingSenderId: "580258903641"
-};
-firebase.initializeApp(config);
+var firelib = require("./firelib").firelib();
 
 
 var bodyParser = require('body-parser')
@@ -59,28 +51,27 @@ router.get('/events', function(req, res, next) {
   res.sendFile(path.join(__dirname, '/views', 'events.html'));
 });
 
-router.get('/login', function(req, res, next) {
-  res.sendFile(path.join(__dirname, '/views', 'login.html'));
-});
-
-router.get('/login', function(req, res, next) {
-  res.sendFile(path.join(__dirname, '/views', 'register.html'));
-});
-
 router.post('/login', function(req, res, next) {
-
-  // you might like to do a database look-up or something more scalable here
-  if (req.body.username && req.body.username === 'user' && req.body.password && req.body.password === 'pass') {
-    req.session.authenticated = true;
-    res.redirect('/');
-  } else {
-    res.redirect('/login');
-  }
+  firelib.signIn(req.body.email, req.body.password);
+  res.sendStatus(200);
 });
 
-router.get('/logout', function(req, res, next) {
-  delete req.session.authenticated;
-  res.redirect('/');
+router.post('/register', function(req, res, next) {
+  firelib.register(req.body.email, req.body.password, () => {
+    console.log("passed in callback");
+    res.sendStatus(200);
+  });
+});
+
+router.get('/currentUser', function(req, res, next) {
+  console.log(firelib.currentUser());
+  res.sendStatus(200);
+});
+
+router.post('/logout', function(req, res, next) {
+  firelib.signOut();
+  console.log(firelib.currUser);
+  res.sendStatus(200);
 });
 
 app.use('/', router);
