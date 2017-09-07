@@ -31,15 +31,25 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
-
-  // firebase
-  if (req.body.username && req.body.username === 'user' && req.body.password && req.body.password === 'pass') {
-    req.session.authenticated = true;
-    res.redirect('/');
-  } else {
-    res.redirect('/login');
-  }
+  console.log(req.body);
+  res.sendStatus(200);
 });
+
+router.post('/guest', function(req, res, next) {
+  console.log(req.body);
+  res.sendStatus(200);
+});
+
+router.post('/register', function(req, res, next) {
+  console.log(req.body);
+  res.sendStatus(200);
+});
+
+router.post('/forgot', function(req, res, next) {
+  console.log(req.body);
+  res.sendStatus(200);
+});
+
 
 app.use('/', router);
 
