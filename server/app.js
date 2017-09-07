@@ -16,7 +16,6 @@ var config = {
 };
 firebase.initializeApp(config);
 
-
 var bodyParser = require('body-parser')
 app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -29,18 +28,6 @@ router.get('/', function(req, res, next) {
     data: "Hello World"
   });
 });
-
-router.post('/login', function(req, res, next) {
-
-  // firebase
-  if (req.body.username && req.body.username === 'user' && req.body.password && req.body.password === 'pass') {
-    req.session.authenticated = true;
-    res.redirect('/');
-  } else {
-    res.redirect('/login');
-  }
-});
-
 app.use('/', router);
 
 const server  = http.createServer(app);
