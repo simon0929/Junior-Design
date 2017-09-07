@@ -16,7 +16,6 @@ var config = {
 };
 firebase.initializeApp(config);
 
-
 var bodyParser = require('body-parser')
 app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -31,6 +30,12 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
+  var email = req.email;
+  var password = req.password;
+  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+    // Handle errors
+  });
+
   console.log(req.body);
   res.sendStatus(200);
 });
@@ -41,6 +46,12 @@ router.post('/guest', function(req, res, next) {
 });
 
 router.post('/register', function(req, res, next) {
+  var email = req.email;
+  var password = req.password;
+  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+    // Handle errors
+  });
+
   console.log(req.body);
   res.sendStatus(200);
 });
@@ -49,7 +60,6 @@ router.post('/forgot', function(req, res, next) {
   console.log(req.body);
   res.sendStatus(200);
 });
-
 
 app.use('/', router);
 
