@@ -1,176 +1,91 @@
 <!DOCTYPE HTML>
 
 <html>
-	<head>
-		<title>Welcome to GT Event Finder! </title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-	</head>
-	<body class="no-sidebar">
-		<div id="page-wrapper">
+  <head>
+    <title>Welcome to GT Event Finder! </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+  </head>
+  <body class="no-sidebar">
+    <div id="page-wrapper">
 
-			<!-- Header -->
-				<div id="header-wrapper">
-					<div id="header" class="container">
+      <!-- Header -->
+        <div id="header-wrapper">
+          <div id="nav"></div>
+        </div>
 
-						<!-- Logo -->
-							<h1 id="logo"><a href="index.html">GT Event Finder</a></h1>
-						<!-- Navigation Bar -->
-							<nav id="nav">
-								<ul>
-									<li>
-										<a href="events">Events</a>
-											<ul>
-												<li><a href="events">Events Feed</a></li>
-												<li><a href="#">Search Events</a></li>
-												<li><a href="#">Map View</a></li>
-												<li><a href="#">Calendar View</a></li>
-												<li><a href="#">Event Reviews</a></li>
-											</ul>
-										</li>
-									<li>
-										<a href="orgs.html">Organizations</a>
-										<ul>
-											<li><a href="#">Search Organizations</a></li>
-											<li><a href="#">Map View</a></li>
-											<li><a href="#">Calendar View</a></li>
-											<li><a href="#">Event Reviews</a></li>
-										</ul>
-									</li>
-									<li class="break">
-										<a href="help.html">Help</a>
-										<ul>
-											<li><a href="faq.html">FAQs</a></li>
-											<li><a href="contact.html">Contact Us</a></li>
-											<li><a href="#">Feedback</a></li>
-										</ul>
-									</li>
-									<li><a href="about.html">About Us</a></li>
-									<!-- Profile and dropdown-->
-									<li>
-										<a href="#"><img src="images/Guest.png" alt="Profile picture" style="width:20px; height:25px; padding:1px;"> Guest</a>
-										<ul>
-											<li><a href="#"><img src="images/bell.svg" alt="Notification bell" style="width:20px; height:20px; margin-right:5px"> Notifications</a></li>
-											<li><a href="#"><img src="images/Profile.png" alt="Profile settings" style="width:20px; height:20px; margin-right:5px;"> Profile Settings</a></li>
-											<li><a href="#"><img src="images/SignOut.jpg" alt="Sign Out" style="width:20px; height:20px; margin-right:5px;"> Sign Out</a></li>
-										</ul>
-									</li>
-					</div>
-				</div>
+      <!-- Main -->
+        <div class="wrapper">
+          <div class="container" id="main">
 
-			<!-- Main -->
-				<div class="wrapper">
-					<div class="container" id="main">
-
-						<!-- Content -->
+            <!-- Content -->
 
 
-				<h2>New Account</h2>
+        <h2>New Account</h2>
 
-				<form id="register-account" role="form" autocomplete="off" class="form" method="post">
+        <form id="register-account" role="form" autocomplete="off" class="form" method="post">
 
-  					<div class="container"	id="main">
-  						<div class="form-group">
-  						<label><b>First Name</b></label>
-    					<input id="firstName" type="text" placeholder="Enter FirstName" class="form-control" name="firstName" required>
+            <div class="container"  id="main">
+              <div class="form-group">
+                <label><b>First Name</b></label>
+                <input id="firstName" type="text" placeholder="Enter FirstName" class="form-control" name="firstName" required>
 
-    					<label><b>Last Name</b></label>
-    					<input id="lastName"type="text" placeholder="Enter LastName" class="form-control" name="lastName" required>
-
-
-    					<label><b>Email</b></label>
-    					<input id ="email" type="email" placeholder="email address" class="form-control" name="email" required>
-
-    					<label><b>Password</b></label>
-   					 	<input id ="password" type="password" placeholder="Enter Password" class="form-control" name="psw" required>
-
-    					<label><b>Repeat Password</b></label>
-    					<input type="password" placeholder="Repeat Password" name="psw-repeat" class="form-control" required>
-
-    					<label><b>Organization</b></label>
-    					<input id="org" type="text" placeholder="Organization" class="form-control" name="organization">
-    					</div>
+                <label><b>Last Name</b></label>
+                <input id="lastName"type="text" placeholder="Enter LastName" class="form-control" name="lastName" required>
 
 
-    					<div class="clearfix">
-      						<button  id="button1" type="button" class="cancelbtn"><a href="index.html">Cancel</a></button>
-      						<button id="button2" type="submit" class="signupbtn">Sign Up</button>
-    					</div>
-  					</div>
-				</form>
+                <label><b>Email</b></label>
+                <input id ="email" type="email" placeholder="email address" class="form-control" name="email" required>
 
+                <label><b>Password</b></label>
+                  <input id ="password" type="password" placeholder="Enter Password" class="form-control" name="psw" required>
 
-			<!-- Footer -->
-				<div id="footer-wrapper">
-					<div id="footer" class="container">
-						<header class="major">
-							<h2>Euismod aliquam vehicula lorem</h2>
-							<p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur vel sem sit<br />
-							dolor neque semper magna lorem ipsum feugiat veroeros lorem ipsum dolore.</p>
-						</header>
-						<div class="row">
-							<section class="6u 12u(narrower)">
-								<form method="post" action="#">
-									<div class="row 50%">
-										<div class="6u 12u(mobile)">
-											<input name="name" placeholder="Name" type="text" />
-										</div>
-										<div class="6u 12u(mobile)">
-											<input name="email" placeholder="Email" type="text" />
-										</div>
-									</div>
-									<div class="row 50%">
-										<div class="12u">
-											<textarea name="message" placeholder="Message"></textarea>
-										</div>
-									</div>
-									<div class="row 50%">
-										<div class="12u">
-											<ul class="actions">
-												<li><input type="submit" value="Send Message" /></li>
-												<li><input type="reset" value="Clear form" /></li>
-											</ul>
-										</div>
-									</div>
-								</form>
-							</section>
-							<section class="6u 12u(narrower)">
-								<div class="row 0%">
-									<ul class="divided icons 6u 12u(mobile)">
-										<li class="icon fa-twitter"><a href="#"><span class="extra">twitter.com/</span>untitled</a></li>
-										<li class="icon fa-facebook"><a href="#"><span class="extra">facebook.com/</span>untitled</a></li>
-										<li class="icon fa-dribbble"><a href="#"><span class="extra">dribbble.com/</span>untitled</a></li>
-									</ul>
-									<ul class="divided icons 6u 12u(mobile)">
-										<li class="icon fa-instagram"><a href="#"><span class="extra">instagram.com/</span>untitled</a></li>
-										<li class="icon fa-youtube"><a href="#"><span class="extra">youtube.com/</span>untitled</a></li>
-										<li class="icon fa-pinterest"><a href="#"><span class="extra">pinterest.com/</span>untitled</a></li>
-									</ul>
-								</div>
-							</section>
-						</div>
-					</div>
-					<div id="copyright" class="container">
-						<ul class="menu">
-							<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-						</ul>
-					</div>
-				</div>
+                <label><b>Repeat Password</b></label>
+                <input type="password" placeholder="Repeat Password" name="psw-repeat" class="form-control" required>
 
-		</div>
+                <label><b>I am a...</b></label>
+                <select id="usertype">
+                  <option value="" disabled="disabled" selected="selected">Select one...</option>
+                  <option value="Student">Student</option>
+                  <option value="Organization Administrator">Organization Administrator</option>
+                </select>
+                <div id="organization" style="display: none">
+                  <label><b>Organization</b></label>
+                  <input id="org" type="text" placeholder="Organization" class="form-control" name="organization">
+                </div>
+              </div>
+              <br>
+              <button id="btn">Sign Up</button>
+              <br>
+              <a href="/login"> Already have an account? </a>
+            </div>
+        </form>
+    </div>
+    </div>
+  </div>
 
-		<!-- Scripts -->
+    <!-- Scripts -->
 
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
-
-	</body>
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/jquery.dropotron.min.js"></script>
+      <script src="assets/js/skel.min.js"></script>
+      <script src="assets/js/util.js"></script>
+      <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+      <script src="assets/js/main.js"></script>
+      <script>
+        $('#nav').load('nav.html');
+        $('#usertype').on('change', function() {
+          if ($(this).val() == 'Organization Administrator') {
+            $("#organization").show();
+          }
+          else {
+            $("#organization").hide();
+          }
+        }).trigger("change");
+      </script>
+  </body>
 </html>

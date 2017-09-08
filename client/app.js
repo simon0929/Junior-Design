@@ -23,7 +23,7 @@ function checkAuth(req, res, next) {
 
   // replace with firebase logic check.
   if (req.url === '/events' && firelib.currentUser() === null) {
-    res.sendFile(path.join(__dirname, '/views', 'login.html'));
+    console.log("eeeek");
     return;
   }
 
@@ -61,15 +61,24 @@ router.post('/forgotpwd', function(req, res, next) {
   });
 });
 
-router.post('/login', function(req, res, next) {
-  firelib.signIn(req.body.email, req.body.password);
-  res.sendStatus(200);
+router.get('/login', function(req, res, next) {
+  res.sendFile(path.join(__dirname, '/views', 'userLogin.html'));
 });
 
-router.post('/register', function(req, res, next) {
-  console.log(firelib.register(req.body.email, req.body.password).then(() => {
-    res.redirect('/events')
-  }));
+router.post('/loginUser', function(req, res, next) {
+  firelib.signIn(req.body.email, req.body.password).then(() => {
+    res.sendStatus(200);
+  });
+});
+
+router.get('/register', function(req, res, next) {
+  res.sendFile(path.join(__dirname, '/views', 'register.html'));
+});
+
+router.post('/registerUser', function(req, res, next) {
+  firelib.register(req.body.email, req.body.password).then(() => {
+    res.sendStatus(200);
+  });
 });
 
 router.get('/currentUser', function(req, res, next) {

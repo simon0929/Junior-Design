@@ -1,92 +1,77 @@
 <!DOCTYPE HTML>
 
 <html>
-	<head>
-		<title>Welcome to GT Event Finder! </title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-	</head>
-	<body class="no-sidebar">
-		<div id="page-wrapper">
+  <head>
+    <title>Welcome to GT Event Finder! </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+  </head>
+  <body class="no-sidebar">
+    <div id="page-wrapper">
 
-			<!-- Header -->
-				<div id="header-wrapper">
-					<div id="header" class="container">
+      <!-- Header -->
+        <div id="header-wrapper">
+          <div id="nav"></div>
+        </div>
 
-						<!-- Logo -->
-							<h1 id="logo"><a href="index.html">GT Event Finder</a></h1>
-						<!-- Navigation Bar -->
-							<nav id="nav">
-								<ul>
-									<li>
-										<a href="events">Events</a>
-											<ul>
-												<li><a href="events">Events Feed</a></li>
-												<li><a href="#">Search Events</a></li>
-												<li><a href="#">Map View</a></li>
-												<li><a href="#">Calendar View</a></li>
-												<li><a href="#">Event Reviews</a></li>
-											</ul>
-										</li>
-									<li>
-										<a href="orgs.html">Organizations</a>
-										<ul>
-											<li><a href="#">Search Organizations</a></li>
-											<li><a href="#">Map View</a></li>
-											<li><a href="#">Calendar View</a></li>
-											<li><a href="#">Event Reviews</a></li>
-										</ul>
-									</li>
-									<li class="break">
-										<a href="help.html">Help</a>
-										<ul>
-											<li><a href="faq.html">FAQs</a></li>
-											<li><a href="contact.html">Contact Us</a></li>
-											<li><a href="#">Feedback</a></li>
-										</ul>
-									</li>
-									<li><a href="about.html">About Us</a></li>
-									<!-- Profile and dropdown-->
-									<li>
-										<a href="#"><img src="images/Guest.png" alt="Profile picture" style="width:20px; height:25px; padding:1px;"> Guest</a>
-										<ul>
-											<li><a href="#"><img src="images/bell.svg" alt="Notification bell" style="width:20px; height:20px; margin-right:5px"> Notifications</a></li>
-											<li><a href="#"><img src="images/Profile.png" alt="Profile settings" style="width:20px; height:20px; margin-right:5px;"> Profile Settings</a></li>
-											<li><a href="#"><img src="images/SignOut.jpg" alt="Sign Out" style="width:20px; height:20px; margin-right:5px;"> Sign Out</a></li>
-										</ul>
-									</li>
-					</div>
-				</div>
-
-				<div class="wrapper">
-					<div class="container" id="main">
-
-						<!-- Content -->
-							<article id="content">
-								<header>
-									<div align= "center">
-										<h2>Log In Here If You Have An Account</h2>
-									</div>
-								</header>
-							</article>
-
-							<form>
-							    <div class="form-group">
-							      <label for="username">Username:</label>
-							      <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username">
-							    </div>
-							    <div class="form-group">
-							      <label for="password">Password:</label>
-							      <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
-							    </div>
-							 	<br>
-							    <button type="submit" class="btn btn-default">Submit</button>
-							  </form>
-							<br>
-							<a href="password_recovery.html"> Forgot Password? </a>
-							</div>		
-						</div>				
+        <div class="wrapper">
+          <div class="container" id="main">
+            <!-- Content -->
+          <article id="content">
+            <header>
+              <div align= "center">
+                <h2>Log In Here If You Have An Account</h2>
+              </div>
+            </header>
+          </article>
+          <form>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+            </div>
+            <br>
+          </form>
+          <button id="btn" class="btn btn-default">Submit</button>
+          <br>
+          <a href="/forgot"> Forgot Password? </a>
+          <br>
+          <a href="/register"> Need to sign up? </a>
+        </div>
+      </div>
+    </div>
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.dropotron.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="assets/js/main.js"></script>
+    <script>
+      $('#nav').load('nav.html');
+      $(document).ready(function(){
+        $("#btn").click(function(){
+          var email = $("#email").val();
+          var password = $("#password").val();
+          if(email === '' || password === '') {
+            alert("Please fill out the form");
+          } else {
+            $.post("/loginUser", {
+              email: email,
+              password: password
+            }, (response, status) => {
+              window.location.href = '/events';
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
