@@ -68,6 +68,9 @@ router.get('/login', function(req, res, next) {
 router.post('/loginUser', function(req, res, next) {
   firelib.signIn(req.body.email, req.body.password).then(() => {
     res.sendStatus(200);
+  }).catch(function(error) {
+    res.redirect(307, "/");
+    console.log(error);
   });
 });
 

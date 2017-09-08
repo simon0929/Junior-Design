@@ -22,10 +22,7 @@ module.exports.firelib = (function() {
   }
 
   var signIn = function(email, password) {
-    return firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-      // Handle errors
-      console.log(error);
-    });
+    return firebase.auth().signInWithEmailAndPassword(email, password);
   }
 
   var signOut = function() {
