@@ -22,8 +22,8 @@ function checkAuth(req, res, next) {
   console.log('checkAuth ' + req.url);
 
   // replace with firebase logic check.
-  if (req.url === '/events' && (!req.session || !req.session.authenticated)) {
-    res.sendFile(path.join(__dirname, '/views', 'faq.html'));
+  if (req.url === '/events' && firelib.currentUser() === null) {
+    res.sendFile(path.join(__dirname, '/views', 'login.html'));
     return;
   }
 
@@ -51,16 +51,25 @@ router.get('/events', function(req, res, next) {
   res.sendFile(path.join(__dirname, '/views', 'events.html'));
 });
 
+router.get('/forgot', function(req, res, next) {
+  res.sendFile(path.join(__dirname, '/views', 'password_recovery.html'));
+});
+
+router.post('/forgotpwd', function(req, res, next) {
+  firelib.forgot(req.body.email).then(() => {
+    res.sendStatus(200);
+  });
+});
+
 router.post('/login', function(req, res, next) {
   firelib.signIn(req.body.email, req.body.password);
   res.sendStatus(200);
 });
 
 router.post('/register', function(req, res, next) {
-  firelib.register(req.body.email, req.body.password, () => {
-    console.log("passed in callback");
-    res.sendStatus(200);
-  });
+  console.log(firelib.register(req.body.email, req.body.password).then(() => {
+    res.redirect('/events')
+  }));
 });
 
 router.get('/currentUser', function(req, res, next) {
@@ -70,7 +79,6 @@ router.get('/currentUser', function(req, res, next) {
 
 router.post('/logout', function(req, res, next) {
   firelib.signOut();
-  console.log(firelib.currUser);
   res.sendStatus(200);
 });
 

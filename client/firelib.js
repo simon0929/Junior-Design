@@ -14,25 +14,29 @@ module.exports.firelib = (function() {
     return firebase.auth().currentUser;
   }
 
-  var register = function(email, password, callback) {
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+  var register = function(email, password) {
+    return firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
       // Handle errors
       console.log(error);
-    }).then(function() {
-      console.log("within callback");
-      callback();
     });
   }
 
   var signIn = function(email, password) {
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+    return firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
       // Handle errors
       console.log(error);
     });
   }
 
   var signOut = function() {
-    firebase.auth().signOut();
+    return firebase.auth().signOut();
+  }
+
+  var forgot = function(email) {
+    return firebase.auth().sendPasswordResetEmail(email).catch(function(error) {
+      // Handle errors
+      console.log(error);
+    });
   }
 
   var onAuthStateChanged = firebase.auth().onAuthStateChanged(function(user) {
@@ -57,9 +61,10 @@ module.exports.firelib = (function() {
 
   return {
     config: config,
+    currentUser: currentUser,
+    forgot: forgot,
     register: register,
     signIn: signIn,
-    signOut: signOut,
-    currentUser: currentUser
+    signOut: signOut
   }
 });
