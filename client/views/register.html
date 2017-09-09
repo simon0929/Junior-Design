@@ -85,6 +85,14 @@
         });
       </script>
       <script>
+        $('#userType').on('change', function() {
+          if ($(this).val() == 'Organization Administrator') {
+            $("#organization").show();
+          }
+          else {
+            $("#organization").hide();
+          }
+        }).trigger("change");
         $(document).ready(function(){
           $("#btn").click(function(){
             var email = $("#email").val();

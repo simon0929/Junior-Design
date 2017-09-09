@@ -22,10 +22,10 @@ function checkAuth(req, res, next) {
   console.log('checkAuth ' + req.url);
 
   // replace with firebase logic check.
-  if (req.url === '/events' && firelib.currentUser() === null) {
-    res.redirect('/login');
-    return;
-  }
+  //if (req.url === '/events' && firelib.currentUser() === null) {
+  //  res.redirect('/login');
+  //  return;
+  //}
 
   next();
 }
