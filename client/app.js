@@ -99,8 +99,20 @@ router.post('/registerUser', function(req, res, next) {
 });
 
 router.get('/currentUser', function(req, res, next) {
-  //console.log(firelib.currentUser());
   res.json(firelib.currentUser());
+});
+
+router.post('/resetPassword', function(req, res, next) {
+  var err = null;
+  firelib.resetPassword(req.body.password).catch(function(error) {
+    err = error;
+  }).then(() => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.sendStatus(200);
+    }
+  });
 });
 
 router.get('/logout', function(req, res, next) {

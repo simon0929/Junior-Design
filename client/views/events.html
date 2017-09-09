@@ -176,7 +176,7 @@
           console.log(response);
           if (response) {
             console.log(response.email);
-            $('#user').html(response.email);
+            $('#user').html(response.email + ' <a href="/logout"><img src="images/SignOut.jpg" alt="Sign Out" style="width:20px; height:20px; margin-right:5px;"></a>');
             $("#user").attr("href", "/settings");
           }
         });

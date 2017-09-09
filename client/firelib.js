@@ -36,6 +36,13 @@ module.exports.firelib = (function() {
     });
   }
 
+  var resetPassword = function(password) {
+    return firebase.auth().currentUser().updatePassword(newPassword).catch(function(error) {
+      // Handle errors
+      console.log(error);
+    });
+  }
+
   var onAuthStateChanged = firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       // User is signed in.
@@ -61,6 +68,7 @@ module.exports.firelib = (function() {
     currentUser: currentUser,
     forgot: forgot,
     register: register,
+    resetPassword: resetPassword,
     signIn: signIn,
     signOut: signOut
   }
