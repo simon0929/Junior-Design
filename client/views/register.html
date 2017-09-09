@@ -23,10 +23,10 @@
           <div class="container" id="main">
 
         <!-- Content -->
-        <form id="register-account" role="form" autocomplete="off" class="form" method="post">
 
-            <div style="width:60%;" class="container"  id="main">
 
+          <div style="width:60%;" class="container"  id="main">
+            <form id="register-account" role="form" autocomplete="off" class="form" method="post" style="margin-bottom:20px;">
               <h2 style="margin-bottom:20px;margin-top:-25px">New Account</h2>
 
               <div class="form-group">
@@ -43,10 +43,10 @@
                 <input style="margin-bottom:20px;" id="password" type="password" placeholder="Enter a password" class="form-control" name="psw" required>
 
                 <label><b>Confirm Password</b></label>
-                <input style="margin-bottom:20px;" type="password" placeholder="Confirm your password" name="psw-repeat" class="form-control" required>
+                <input id="confirm" style="margin-bottom:20px;" type="password" placeholder="Confirm your password" name="psw-repeat" class="form-control" required>
 
                 <label><b>I am a...</b></label>
-                <select id="usertype">
+                <select id="userType">
                   <option value="" disabled="disabled" selected="selected">Select one...</option>
                   <option value="Student">Student</option>
                   <option value="Organization Administrator">Organization Administrator</option>
@@ -56,12 +56,11 @@
                   <input id="org" type="text" placeholder="Organization" class="form-control" name="organization">
                 </div>
               </div>
-              <br>
-              <button style="margin-bottom:20px;" id="btn">Sign Up</button>
-              <br>
-              <a href="/login"> Already have an account? </a>
-            </div>
-        </form>
+            </form>
+            <button id="btn">Sign Up</button>
+            <br>
+            <a href="/login"> Already have an account? </a>
+          </div>
     </div>
     </div>
   </div>
@@ -76,7 +75,7 @@
       <script src="assets/js/main.js"></script>
       <script>
         $('#nav').load('nav.html');
-        $('#usertype').on('change', function() {
+        $('#userType').on('change', function() {
           if ($(this).val() == 'Organization Administrator') {
             $("#organization").show();
           }
@@ -84,6 +83,31 @@
             $("#organization").hide();
           }
         }).trigger("change");
+        $('#nav').load('nav.html');
+
+        $(document).ready(function(){
+          $("#btn").click(function(){
+            var email = $("#email").val();
+            var password = $("#password").val();
+            var firstName = $("#firstName").val();
+            var lastName = $("#lastName").val();
+            var userType = $("#userType").val();
+            var confirm = $("#confirm").val();
+            if (password != confirm) {
+              alert("Passwords do not match");
+            }
+            if(email === '' || password === '') {
+              alert("Please fill out the form");
+            } else {
+              $.post("/registerUser", {
+                email: email,
+                password: password
+              }, (response, status) => {
+                window.location.href = '/events';
+              });
+            }
+          });
+        });
       </script>
   </body>
 </html>

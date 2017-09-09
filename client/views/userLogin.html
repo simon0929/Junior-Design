@@ -67,7 +67,12 @@
               email: email,
               password: password
             }, (response, status) => {
-              window.location.href = '/events';
+              console.log(status);
+              if (status == 200) {
+                window.location.href = '/events';
+              } else {
+                window.location.href = '/';
+              }
             });
           }
         });
