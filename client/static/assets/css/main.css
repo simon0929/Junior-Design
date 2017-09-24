@@ -412,7 +412,7 @@
 	}
 
 	.\38 u, .\38 u\24 {
-		width: 66.6666666667%;
+		width: 100%;
 		clear: none;
 		margin-left: 0;
 	}
@@ -553,11 +553,13 @@
 		}
 
 		.row.\31 50\25 > * {
-			padding: 60px 0 0 60px;
+			padding: 0;
 		}
 
 		.row.\31 50\25 {
 			margin: -60px 0 -1px -60px;
+			text-align: center;
+			float: none;
 		}
 
 		.row.uniform.\31 50\25 > * {
@@ -1714,6 +1716,7 @@
 
 	section, article {
 		margin-bottom: 3em;
+		text-align: center;
 	}
 
 	section > :last-child,
