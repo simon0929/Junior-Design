@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+
+<html>
+  <head>
+    <title>Welcome to GT Event Finder! </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+  </head>
+  <body class="no-sidebar">
+    <div id="page-wrapper">
+
+      <!-- Header -->
+        <div id="header-wrapper">
+          <div id="nav"></div>
+        </div>
+
+      <!-- Main -->
+        <div class="wrapper">
+          <div class="container" id="main">
+
+        <!-- Content -->
+
+
+          <div style="width:60%;" class="container"  id="main">
+            <form id="register-account" role="form" autocomplete="off" class="form" method="post" style="margin-bottom:20px;">
+              <h2 style="margin-bottom:20px;margin-top:-25px">Create a Group</h2>
+
+              <div class="form-group">
+                <label><b>Group Name</b></label>
+                <input style="margin-bottom:20px;" id="group" type="text" placeholder="Enter your name of group " class="form-control" name="Group Name" required>
+
+                <label><b>Description</b></label>
+                <textarea style="margin-bottom:1px;" id="description"type="text" placeholder="What is your group about?" class="form-control" name="description" required></textarea>
+
+
+                <label><b>Email</b></label>
+                <input style="margin-bottom:20px;" id ="email" type="email" placeholder="Enter your institution email" class="form-control" name="email" required>
+
+                <label><b>Create Password</b></label>
+                <input style="margin-bottom:20px;" id="password" type="password" placeholder="Enter a password" class="form-control" name="psw" required>
+
+                <label><b>Confirm Password</b></label>
+                <input id="confirm" style="margin-bottom:20px;" type="password" placeholder="Confirm your password" name="psw-repeat" class="form-control" required>
+
+
+              </div>
+            </form>
+            <button id="btn">Create</button>
+            <br>
+            <a href="/login"> Already have an account? </a>
+          </div>
+    </div>
+    </div>
+  </div>
+
+    <!-- Scripts -->
+
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/jquery.dropotron.min.js"></script>
+      <script src="assets/js/skel.min.js"></script>
+      <script src="assets/js/util.js"></script>
+      <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+      <script src="assets/js/main.js"></script>
+      <script>
+        $('#nav').load('nav.html');
+        $.get("/currentUser", (response, status) => {
+          console.log(response);
+          if (response) {
+            console.log(response.email);
+            $('#user').html(response.email + '<a href="/logout"><img src="images/SignOut.jpg" alt="Sign Out" style="width:20px; height:20px; margin-right:5px;"></a>');
+            $("#user").attr("href", "/settings");
+          }
+        });
+      </script>
+      <script>
+        $('#userType').on('change', function() {
+          if ($(this).val() == 'Organization Administrator') {
+            $("#organization").show();
+          }
+          else {
+            $("#organization").hide();
+          }
+        }).trigger("change");
+        $(document).ready(function(){
+          $("#btn").click(function(){
+            var email = $("#email").val();
+            var password = $("#password").val();
+            var group = $("#group").val();
+            var description = $("#description").val();
+            var confirm = $("#confirm").val();
+            if (password != confirm) {
+              alert("Passwords do not match");
+            }
+            if(email === '' || password === '') {
+              alert("Please fill out the form");
+            } else {
+              $.post("/registerUser", {
+                email: email,
+                password: password
+              }, (response, status) => {
+                window.location.href = '/events';
+              });
+            }
+          });
+        });
+      </script>
+  </body>
+</html>
