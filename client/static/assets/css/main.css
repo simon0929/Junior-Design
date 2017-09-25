@@ -260,6 +260,25 @@
 		display: relative;
 	}
 
+	.eDetails {
+	display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    text-align: center;
+    font-weight:normal;color:#000000;letter-spacing:1pt;word-spacing:2pt;font-size:20px;text-align:left;font-family:arial;line-height:1;margin:0px;padding:0px 100px 0px 100px;
+	}
+
+	#info {
+		color:#000080;
+		font-size:120%;
+	}
+
+	.w-w {
+		padding-top:100px;
+	}
+
 /* Grid */
 
 	.row {

@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Events Page</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+  </head>
+
+  <body class="right-sidebar">
+    <div id="page-wrapper">
+
+      <!-- Header -->
+        <div id="header-wrapper">
+          <div id="nav"></div>
+        </div>
+
+      <!-- Main -->
+        <div class="wrapper">
+          <div class="container" id="main">
+            <div class="row 150%">
+              <div class="8u 12u(narrower)">
+
+                <!-- Content -->
+                  <article id="content">
+                    <header>
+                      <h2><b id = "info"><!--Student Org-->GT eSports</b></h2>
+                    </header>
+
+                    <div class="row">
+                            <div class = "eDetails"><p><b id = "info">Details: </b><!-- Org Details -->Today we'll be having a Super Smash Bros tournament. Come with your stomachs empty because there will be unlimited pizza!!!</p>
+
+                           	<div class = "w-w">
+                            <p><b id = "info">When: </b><!--Date-->October 02, 2017 at 6:00pm</p>
+
+                            <p><b id = "info">Where: </b><!--Location-->Klaus Advanced Computing Building Room 2456</p>
+                            </div>
+                            </div>
+                        
+                    </div>
+                  </article>
+
+              </div>         
+            </div>
+          </div>
+        </div>
+
+
+<!-- Scripts -->
+
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/jquery.dropotron.min.js"></script>
+      <script src="assets/js/skel.min.js"></script>
+      <script src="assets/js/util.js"></script>
+      <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+      <script src="assets/js/main.js"></script>
+      <script>
+        $('#nav').load('nav.html');
+        $.get("/currentUser", (response, status) => {
+          console.log(response);
+          if (response) {
+            console.log(response.email);
+            $('#user').html(response.email + ' <a href="/logout"><img src="images/SignOut.jpg" alt="Sign Out" style="width:20px; height:20px; margin-right:5px;"></a>');
+            $("#user").attr("href", "/settings");
+          }
+        });
+      </script>
+  </body>
+</html>
