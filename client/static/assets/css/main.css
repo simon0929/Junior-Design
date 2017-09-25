@@ -218,9 +218,9 @@
 /* Events Feed */
 	
 	.eventCardWrapper {
-		display: flex;
-    	flex-flow: row-reverse wrap-reverse;
-    	justify-content: space-around;
+		display: block;
+		height: 25em;
+		overflow: scroll;
 	}
 
 	.eventCard {
@@ -553,11 +553,11 @@
 		}
 
 		.row.\31 50\25 > * {
-			padding: 0;
+			padding: 25px;
 		}
 
 		.row.\31 50\25 {
-			margin: -60px 0 -1px -60px;
+			margin: -60px;
 			text-align: center;
 			float: none;
 		}
@@ -1731,6 +1731,7 @@
 	}
 
 	header {
+		margin-top: 0;
 		margin-bottom: 1.5em;
 	}
 
@@ -2415,7 +2416,7 @@
 		/* Wrappers */
 
 			.wrapper {
-				padding: 5em 0 5em 0;
+				padding: 3.5em 0 5em 0;
 			}
 
 			#header-wrapper {
